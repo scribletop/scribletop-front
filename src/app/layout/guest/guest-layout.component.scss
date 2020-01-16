@@ -1,0 +1,28 @@
+.top-bar {
+  display: flex;
+  padding: 1rem;
+
+  background-color: var(--background-tertiary);
+  color: var(--foreground-quaternary)
+}
+
+.auth-links {
+  display: flex;
+  flex-flow: row;
+  margin-left: auto;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.links-list-item {
+  display: block;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+#main {
+  padding: 0 1rem;
+}

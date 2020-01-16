@@ -1,0 +1,25 @@
+<h1>Create an account</h1>
+<form (ngSubmit)="register()" [formGroup]="registrationForm" app-form>
+  <app-field>
+    <label for="register-username">Username</label>
+    <input autofocus formControlName="username" id="register-username" type="text" #usernameField>
+    <p class="helper">Your username can be changed, and doesn't have to be unique across our system. Yeep!</p>
+  </app-field>
+
+  <app-field>
+    <label for="register-email">Email</label>
+    <input formControlName="email" id="register-email" type="email">
+    <p class="helper">We need your email address to confirm your account, and to contact you sometime.</p>
+  </app-field>
+
+  <app-field>
+    <label for="register-password">Password</label>
+    <input formControlName="password" id="register-password" type="password">
+    <p class="helper">The password must be of at least 8 characters. Tip: use a password manager!</p>
+  </app-field>
+
+  <app-field>
+    <button *ngIf="!loading" type="submit">Register</button>
+    <app-loader *ngIf="loading"></app-loader>
+  </app-field>
+</form>

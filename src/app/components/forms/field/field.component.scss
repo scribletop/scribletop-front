@@ -1,0 +1,68 @@
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: .5em;
+  max-width: 600px;
+}
+
+.field label {
+  padding: .5em 1em .5em 0;
+  vertical-align: middle;
+  flex: 1;
+}
+
+.field input {
+  flex: 2 100%;
+}
+
+.field input {
+  padding: .4em;
+  color: var(--foreground-default);
+  border: 1px solid var(--background-secondary);
+  border-radius: 3px;
+}
+
+.field button {
+  padding: .5em;
+  border: 1px solid var(--foreground-light);
+  color: var(--foreground-light);
+  background-color: var(--background-light);
+}
+
+.field button:hover,
+.field button:focus {
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  background-color: var(--background-secondary);
+}
+
+.field .ng-invalid.ng-touched {
+  color: var(--error-default);
+  border-color: var(--error-default);
+}
+
+.field .helper {
+  margin-right: auto;
+  font-size: .7rem;
+  color: var(--foreground-secondary);
+}
+
+@media screen and (min-width: 768px) {
+  .field > input {
+    flex: 3;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .field > input {
+    flex: 4;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .field > input {
+    flex: 5;
+  }
+}

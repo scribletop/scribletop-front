@@ -1,0 +1,22 @@
+<header class="top-bar">
+  <nav class="home-links">
+    <ul class="links-list">
+      <li class="links-list-item"><a app-important-link routerLink="">Home</a></li>
+    </ul>
+  </nav>
+
+  <nav class="auth-links">
+    <ul class="links-list">
+      <li class="links-list-item">
+        <a app-important-link routerLink="auth/login" routerLinkActive="active">Login</a>
+      </li>
+      <li class="links-list-item">
+        <a app-important-link routerLink="auth/register" routerLinkActive="active">Register</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <ng-content></ng-content>
+</main>

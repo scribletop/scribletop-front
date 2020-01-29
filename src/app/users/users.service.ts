@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   create(body: CreateUserRequest): Observable<User> {
-    return this.http.post('users', body).pipe(
+    return this.http.post('users/', body).pipe(
       map(response => EntityBuilder.buildOne(User, response)),
     );
   }

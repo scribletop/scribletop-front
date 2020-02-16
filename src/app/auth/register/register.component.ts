@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ApiValidationErrorDetail } from '../../api/validation-error';
 import { UsersService } from '../../users/users.service';
 
 @Component({
@@ -21,6 +23,8 @@ export class RegisterComponent implements AfterViewInit {
     password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
   });
 
+  formError = '';
+
   constructor(private readonly fb: FormBuilder, private readonly users: UsersService) {
   }
 
@@ -35,8 +39,15 @@ export class RegisterComponent implements AfterViewInit {
         (result) => {
           this.loading = false;
         },
-        (error) => {
+        (error: HttpErrorResponse) => {
           this.loading = false;
+          if (error.status === 422) {
+            error.error.details.forEach(
+              (e: ApiValidationErrorDetail) => this.registrationForm.controls[e.field].setErrors({ api: e.error }),
+            );
+          } else {
+            this.formError = error.error?.message || error.message;
+          }
         },
       );
     }

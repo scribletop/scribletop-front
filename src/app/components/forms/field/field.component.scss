@@ -43,6 +43,16 @@
   border-color: var(--error-default);
 }
 
+.field .error {
+  flex-basis: 100%;
+  color: var(--error-default);
+  font-size: .88rem;
+
+  p {
+    margin: 0;
+  }
+}
+
 .field .helper {
   margin-right: auto;
   font-size: .7rem;

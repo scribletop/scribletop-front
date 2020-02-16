@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { environment } from '../environments/environment';
 import { BaseUrlInterceptor } from './api/base-url-interceptor.service';
+import { BasicErrorsInterceptor } from './api/basic-errors-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,11 @@ import { ThemeModule } from './theme/theme.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BaseUrlInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicErrorsInterceptor,
       multi: true,
     },
     {

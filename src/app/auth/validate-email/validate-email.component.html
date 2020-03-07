@@ -1,0 +1,13 @@
+<p *ngIf="validated === undefined">
+  Your email is being validated. Please hold...
+</p>
+
+<p *ngIf="validated === true">
+  Your email was successfully validated and you were automatically logged in! <br>
+  <a routerLink="/games">Click here</a> to begin your journey.
+</p>
+
+<p *ngIf="validated === false">
+  Something went wrong. Your link is either expired, or your account simply does not exist yet. <br>
+  <a routerLink="/auth/registration">Click here</a> to create an account.
+</p>

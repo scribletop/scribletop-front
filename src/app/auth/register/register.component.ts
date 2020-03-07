@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiValidationErrorDetail } from '../../api/validation-error';
 import { UsersService } from '../../users/users.service';
 
@@ -25,7 +26,11 @@ export class RegisterComponent implements AfterViewInit {
 
   formError = '';
 
-  constructor(private readonly fb: FormBuilder, private readonly users: UsersService) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly users: UsersService,
+    private readonly router: Router,
+  ) {
   }
 
   public ngAfterViewInit(): void {
@@ -36,9 +41,7 @@ export class RegisterComponent implements AfterViewInit {
     if (this.registrationForm.valid) {
       this.loading = true;
       this.users.create(this.registrationForm.value).subscribe(
-        (result) => {
-          this.loading = false;
-        },
+        () => this.router.navigate(['auth/registration-complete']),
         (error: HttpErrorResponse) => {
           this.loading = false;
           if (error.status === 422) {

@@ -23,4 +23,10 @@ export class UsersService {
       map(response => EntityBuilder.buildOne(User, response)),
     );
   }
+
+  findByTag(tag: string): Observable<User> {
+    return this.http.get(`users/${tag}`).pipe(
+      map(response => EntityBuilder.buildOne(User, response)),
+    );
+  }
 }

@@ -9,6 +9,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(`${this.baseUrl.replace(/\/$/, '')}/${request.url.replace(/^\//, '')}`);
     const apiReq = request.clone({
       url: `${this.baseUrl.replace(/\/$/, '')}/${request.url.replace(/^\//, '')}`,
     });

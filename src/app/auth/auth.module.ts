@@ -7,9 +7,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { RegistrationCompleteComponent } from './registration-complete/registration-complete.component';
 import { ValidateEmailComponent } from './validate-email/validate-email.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [RegisterComponent, RegistrationCompleteComponent, ValidateEmailComponent],
+  declarations: [RegisterComponent, RegistrationCompleteComponent, ValidateEmailComponent, LoginComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

@@ -1,0 +1,20 @@
+<h1>Authenticate</h1>
+<form (ngSubmit)="login()" [formGroup]="form" app-form>
+  <app-field [control]="form.controls.email">
+    <label for="login-email">Email</label>
+    <input formControlName="email" id="login-email" type="email" #emailField>
+    <p class="helper">The email you used to create your account.</p>
+  </app-field>
+
+  <app-field [control]="form.controls.password">
+    <label for="login-password">Password</label>
+    <input formControlName="password" id="login-password" type="password">
+    <p class="helper">The password you used to create your account.</p>
+  </app-field>
+
+  <app-field>
+    <button *ngIf="!loading" type="submit">Login</button>
+    <app-loader *ngIf="loading"></app-loader>
+    <div class="error">{{ formError }}</div>
+  </app-field>
+</form>

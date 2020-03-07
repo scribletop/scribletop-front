@@ -4,23 +4,18 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { handleFormError } from '../../components/forms/form/form.component';
-import { UsersService } from '../../users/users.service';
+import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class RegisterComponent implements AfterViewInit {
-  @ViewChild('usernameField') private usernameField: ElementRef;
+export class LoginComponent implements AfterViewInit {
+  @ViewChild('emailField') private emailField: ElementRef;
   loading = false;
 
   form = this.fb.group({
-    username: ['', Validators.compose([
-      Validators.required,
-      Validators.minLength(3),
-      Validators.pattern(/^[a-z][a-z0-9._-]+$/),
-    ])],
     email: ['', Validators.compose([Validators.required, Validators.email])],
     password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
   });
@@ -29,20 +24,20 @@ export class RegisterComponent implements AfterViewInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly users: UsersService,
+    private readonly auth: AuthService,
     private readonly router: Router,
   ) {
   }
 
   public ngAfterViewInit(): void {
-    this.usernameField.nativeElement.focus();
+    this.emailField.nativeElement.focus();
   }
 
-  public register(): void {
+  public login(): void {
     if (this.form.valid) {
       this.loading = true;
-      this.users.create(this.form.value).subscribe(
-        () => this.router.navigate(['auth/registration-complete']),
+      this.auth.login(this.form.value).subscribe(
+        () => this.router.navigate(['/games']),
         (error: HttpErrorResponse) => handleFormError(this, error),
       );
     }
